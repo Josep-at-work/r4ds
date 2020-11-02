@@ -221,6 +221,7 @@ arrange(flights, year, month, day)
 ```
 
 Use `desc()` to re-order by a column in descending order:
+*Adding a '-' before the variable also sorts the values in descending order.*
 
 ```{r}
 arrange(flights, desc(dep_delay))
@@ -296,6 +297,8 @@ select(flights, time_hour, air_time, everything())
     
 1.  What happens if you include the name of a variable multiple times in
     a `select()` call?
+    
+    *It only returns it ones. A tibble object can't have two variables with the same name so it just returns a tibble of one row.*
   
 1.  What does the `any_of()` function do? Why might it be helpful in conjunction
     with this vector?
@@ -318,7 +321,7 @@ Besides selecting sets of existing columns, it's often useful to add new columns
 `mutate()` always adds new columns at the end of your dataset so we'll start by creating a narrower dataset so we can see the new variables. Remember that when you're in RStudio, the easiest way to see all the columns is `View()`.
 
 ```{r}
-flights_sml <- select(flights, 
+flights_sml <- select(flights,  #ejecutando este chunk se tienes flights_ en el directorio
   year:day, 
   ends_with("delay"), 
   distance, 
